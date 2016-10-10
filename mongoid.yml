@@ -1,0 +1,18 @@
+development: 
+  clients: 
+    default:
+      database: neeqcrawler
+      hosts:
+        - localhost:27017
+      options:
+        user: "crawler"
+        password: "ca$hc0w"
+production: 
+  clients: 
+    default:
+      database: neeqcrawler
+      hosts:
+        - localhost:27017
+      options:
+        user: "crawler"
+        password: "ca$hc0w"       

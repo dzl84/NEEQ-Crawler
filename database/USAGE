@@ -1,0 +1,10 @@
+To setup the database for neeq-crawler please follow the steps below.
+
+1. Make sure you have MongoDB v3.2 installed on your system and mongo shell available.
+   'admin_usr' and 'admin_pwd' is the root user/pwd of your mongo db instance.
+2. Run the following command to check user roles
+mongo -u <admin_usr> -p <admin_pwd> localhost:27017/admin  <path_to_workspace>/neeq-crawler/database/prerequisite.js
+3. Run the following command to initialize neeqcrawler database
+mongo -u <admin_usr> -p <admin_pwd> localhost:27017/admin  <path_to_workspace>/neeq-crawler/database/createdb.js
+4. If you want to drop the neeqcrawler database, run the following command
+mongo -u <admin_usr> -p <admin_pwd> localhost:27017/admin  <path_to_workspace>/neeq-crawler/database/dropdb.js

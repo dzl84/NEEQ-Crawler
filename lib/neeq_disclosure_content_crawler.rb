@@ -11,7 +11,7 @@ class NeeqDiscContentCrawler
   NEEQURI = "http://www.neeq.com.cn"
 
   def initialize
-    @pool = Concurrent::CachedThreadPool.new
+    @pool = Concurrent::FixedThreadPool.new 10
   end
     
   def crawl_all
@@ -44,6 +44,8 @@ class NeeqDiscContentCrawler
   
   def get_content(link)
     filename = link.split("/").last
+    return nil unless filename.end_with?("pdf") or filename.end_with?("txt")
+    
     data = ""
     retry_times = 3
     begin
@@ -57,7 +59,6 @@ class NeeqDiscContentCrawler
       return nil
     end
     return data.force_encoding("GBK").encode("UTF-8") if filename.end_with?("txt")
-    return nil unless filename.end_with?("pdf")
     
     # run pdftotext to extract content
     content = ""
